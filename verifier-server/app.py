@@ -4,7 +4,7 @@ import json
 
 event_addr = "0x750e3394f4551dcf9d61b5152260ddf6c0cdf781064874bb27a66c330072d31d"
 module_addr = "0x750e3394f4551dcf9d61b5152260ddf6c0cdf781064874bb27a66c330072d31d"
-module_name = "DNuVModuleTest"
+module_name = "DNuVModuleTest1"
 module = f"{module_addr}::{module_name}::VerificationPool"
 event_field = "task_event"
 track_file = "track.json"

@@ -1,4 +1,4 @@
-module my_addrx::DNuVModuleTest{ 
+module my_addrx::DNuVModuleTest1{ 
 
     use 0x1::signer;
     use 0x1::simple_map::{Self, SimpleMap};
