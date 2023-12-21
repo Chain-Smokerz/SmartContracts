@@ -1,5 +1,6 @@
 import requests
 import json
+import threading, time
 
 
 event_addr = "0x750e3394f4551dcf9d61b5152260ddf6c0cdf781064874bb27a66c330072d31d"
@@ -31,5 +32,12 @@ def get_pending_tasks(complete_tasks=False):
     
     return tasks
 
-for task in get_pending_tasks(complete_tasks=False):
-    print(task)
+def background():
+    while True:
+        for task in get_pending_tasks(complete_tasks=True):
+            print(task)
+        print('\n\n')
+        time.sleep(5)
+
+b = threading.Thread(name='background', target=background)
+b.start()
