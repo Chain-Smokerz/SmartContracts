@@ -2,3 +2,4 @@ move/.aptos/
 move/build/
 test-ui/build/
 test-ui/node_modules/
+verifier-server/env/
