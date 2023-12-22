@@ -3,6 +3,9 @@ import json
 import threading
 import time
 import pyautogui
+from sc_interact import *
+import random
+import asyncio
 
 
 event_addr = "0x750e3394f4551dcf9d61b5152260ddf6c0cdf781064874bb27a66c330072d31d"
@@ -51,12 +54,15 @@ def send_secret(phone, secret):
     time.sleep(1)
     pyautogui.click(my_coord[0], my_coord[1])
 
-def background():
-    while True:
-        for task in get_pending_tasks(complete_tasks=False):
-            print(task)
-        print('\n\n')
-        time.sleep(5)
+while True:
+    for task in get_pending_tasks(complete_tasks=True):
+        phone = task['phone']
+        user = task['user']
+        print(f"\nPhone: {phone}\nUser: {user}\n")
 
-b = threading.Thread(name='background', target=background)
-b.start()
+        otp = str(random.randint(100000, 999999))
+        tx_hash = asyncio.run(push_otp(user, otp))
+        print(f"tx_hash: {tx_hash}")
+        send_secret(phone, otp)
+    print('\n\n')
+    time.sleep(10)
