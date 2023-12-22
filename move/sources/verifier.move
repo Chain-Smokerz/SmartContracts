@@ -80,7 +80,7 @@ module my_addrx::DNuVModuleTest1{
         );
     }
 
-    public entry fun submit_otp(acc: &signer, user: address, otp_hash: vector<u8>) acquires VerificationPool {
+    public entry fun push_otp(acc: &signer, user: address, otp_hash: vector<u8>) acquires VerificationPool {
         let addr = signer::address_of(acc);
         assert_is_owner(addr);
         let v_pool = borrow_global_mut<VerificationPool>(@my_addrx);
