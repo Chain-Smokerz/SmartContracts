@@ -1,0 +1,4 @@
+aptos_sdk==0.7.1
+PyAutoGUI==0.9.54
+PyYAML==6.0.1
+Requests==2.31.0
