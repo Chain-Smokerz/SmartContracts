@@ -9,6 +9,7 @@ from aptos_sdk.transactions import (
     TransactionPayload,
 )
 from hashlib import sha256
+import module_metadata
 
 
 secret_path = "../move/.aptos/config.yaml"
@@ -19,8 +20,8 @@ verifier = Account.load_key(pr_key)
 public_key = verifier.address()
 
 NODE_URL = "https://fullnode.devnet.aptoslabs.com/v1"
-module_addr = "0x750e3394f4551dcf9d61b5152260ddf6c0cdf781064874bb27a66c330072d31d"
-module_name = "DNuVModuleTest1"
+module_addr = module_metadata.module_addr
+module_name = module_metadata.module_name
 
 class DNuVProtoClient(RestClient):
     async def push_otp(self, sender, user, otp_hash):

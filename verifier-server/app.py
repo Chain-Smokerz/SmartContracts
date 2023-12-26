@@ -6,11 +6,12 @@ import pyautogui
 from sc_interact import *
 import random
 import asyncio
+import module_metadata
 
 
-event_addr = "0x750e3394f4551dcf9d61b5152260ddf6c0cdf781064874bb27a66c330072d31d"
-module_addr = "0x750e3394f4551dcf9d61b5152260ddf6c0cdf781064874bb27a66c330072d31d"
-module_name = "DNuVModuleTest1"
+event_addr = module_metadata.event_addr
+module_addr = module_metadata.module_addr
+module_name = module_metadata.module_name
 module = f"{module_addr}::{module_name}::VerificationPool"
 event_field = "task_event"
 track_file = "track.json"
@@ -63,6 +64,7 @@ while True:
         otp = str(random.randint(100000, 999999))
         tx_hash = asyncio.run(push_otp(user, otp))
         print(f"tx_hash: {tx_hash}")
+        print(f"otp: {otp}")
         send_secret(phone, otp)
     print('\n\n')
     time.sleep(10)
